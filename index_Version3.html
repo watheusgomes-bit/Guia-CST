@@ -7,33 +7,40 @@
   <style>
     *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;}
     body{background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);min-height:100vh;padding:20px;}
-    .container{max-width:900px;margin:0 auto;background:white;border-radius:15px;box-shadow:0 20px 40px rgba(0,0,0,.1);overflow:hidden;}
-    header{background:linear-gradient(135deg,#2c3e50,#34495e);color:white;padding:30px;text-align:center;position:relative;}
-    h1{font-size:2.2rem;margin-bottom:10px;}
-    .subtitle{opacity:.9;font-size:1.05rem;}
-    .lang-toggle{position:absolute;top:15px;right:20px;background:#3498db;color:white;border:none;border-radius:6px;padding:6px 12px;cursor:pointer;font-weight:600;transition:background .3s;}
-    .lang-toggle:hover{background:#2980b9;}
+    .container{max-width:1000px;margin:0 auto;background:white;border-radius:15px;box-shadow:0 20px 40px rgba(0,0,0,.1);overflow:hidden;}
+    header{background:linear-gradient(135deg,#2c3e50,#34495e);color:white;padding:20px 30px;text-align:center;position:relative;}
+    h1{font-size:2.0rem;margin-bottom:6px;}
+    .subtitle{opacity:.9;font-size:0.98rem;margin-bottom:8px;}
+    .lang-group{position:absolute;top:14px;right:16px;display:flex;gap:8px;}
+    .lang-btn{background:#3498db;color:white;border:none;border-radius:6px;padding:6px 10px;cursor:pointer;font-weight:600;transition:background .2s;}
+    .lang-btn:hover{background:#2980b9;}
+    .lang-btn.active{background:#1f6fb2;box-shadow:0 2px 6px rgba(0,0,0,0.15);}
     .input-section{padding:30px;background:#f8f9fa;}
     .input-group{display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap;}
-    input{flex:1;padding:15px;border:2px solid #e9ecef;border-radius:8px;font-size:1.1rem;text-align:center;min-width:160px;}
+    input{flex:1;padding:15px;border:2px solid #e9ecef;border-radius:8px;font-size:1.05rem;text-align:center;min-width:160px;}
     input:focus{outline:none;border-color:#3498db;}
-    button{background:#2ecc71;color:white;border:none;padding:12px 18px;border-radius:8px;cursor:pointer;font-size:1.05rem;font-weight:600;transition:background .3s;}
+    button{background:#2ecc71;color:white;border:none;padding:12px 18px;border-radius:8px;cursor:pointer;font-size:1.02rem;font-weight:600;transition:background .3s;}
     button:hover{background:#27ae60;}
     .result-section{padding:0 30px 30px;}
-    .result-card{background:white;border-radius:10px;padding:20px;margin-bottom:20px;box-shadow:0 5px 15px rgba(0,0,0,.08);border-left:5px solid #3498db;}
-    .result-title{color:#2c3e50;font-size:1.2rem;margin-bottom:12px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
-    .origin-badge,.tax-badge{display:inline-block;color:white;padding:4px 10px;border-radius:20px;font-size:.85rem;margin-right:8px;}
+    .result-card{background:white;border-radius:10px;padding:18px;margin-bottom:16px;box-shadow:0 5px 15px rgba(0,0,0,.08);border-left:5px solid #3498db;}
+    .result-title{color:#2c3e50;font-size:1.05rem;margin-bottom:10px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+    .origin-badge,.tax-badge{display:inline-block;color:white;padding:4px 10px;border-radius:20px;font-size:.82rem;margin-right:8px;}
     .origin-badge{background:#e74c3c;}
     .tax-badge{background:#9b59b6;}
-    .features{background:#fff3cd;border:1px solid #ffeaa7;border-radius:8px;padding:12px;margin-top:12px;}
-    .feature-item{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
-    .error{background:#f8d7da;color:#721c24;border:1px solid #f5c6cb;border-radius:8px;padding:18px;text-align:center;}
+    .features{background:#fff3cd;border:1px solid #ffeaa7;border-radius:8px;padding:10px;margin-top:10px;}
+    .feature-item{display:flex;align-items:center;gap:10px;margin-bottom:6px;}
+    .error{background:#f8d7da;color:#721c24;border:1px solid #f5c6cb;border-radius:8px;padding:14px;text-align:center;}
     .valid-csts{background:#d1ecf1;border:1px solid #bee5eb;border-radius:8px;padding:12px;margin-top:12px;}
-    .valid-csts h4{color:#0c5460;margin-bottom:10px;}
+    .valid-csts h4{color:#0c5460;margin-bottom:8px;}
     .cst-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(80px,1fr));gap:6px;font-size:.9rem;}
     .cst-item{background:white;padding:8px;border-radius:4px;text-align:center;border:1px solid #b8daff;cursor:pointer;}
-    footer{padding:12px;text-align:center;color:#6c757d;font-size:.9rem;}
+    .cst-item:hover{background:#f1f8ff;}
+    .specific-card{background:#eef7ff;border-left:5px solid #2b9be6;padding:12px;border-radius:8px;margin-top:10px;}
+    .about-card{background:#f7f9fb;border:1px solid #e3eefc;border-radius:8px;padding:14px;margin:14px 30px;}
+    footer{padding:12px;text-align:center;color:#6c757d;font-size:.88rem;}
     a.small-link{color:#3498db;text-decoration:none;}
+    pre.small {white-space:pre-wrap;font-family:inherit;font-size:0.95rem;}
+    .btn-link {background:transparent;border:1px solid #cce5ff;color:#2b9be6;padding:6px 10px;border-radius:6px;cursor:pointer;}
   </style>
 </head>
 <body>
@@ -41,19 +48,29 @@
     <header>
       <h1 id="title">🔍 Interpretador de CST ICMS</h1>
       <p class="subtitle" id="subtitle">Regime Normal - Baseado na Tabela Oficial</p>
-      <button class="lang-toggle" id="langToggle">EN</button>
+
+      <div class="lang-group" role="tablist" aria-label="Escolha do idioma">
+        <button class="lang-btn" id="btnPT" aria-pressed="true">PT</button>
+        <button class="lang-btn" id="btnEN" aria-pressed="false">EN</button>
+        <button class="lang-btn" id="btnZH" aria-pressed="false">中文</button>
+      </div>
     </header>
 
     <div class="input-section">
       <div class="input-group">
         <input type="text" id="cstInput" placeholder="Digite o CST (ex: 000, 170, 541)" maxlength="3" pattern="[0-9]{3}">
         <button id="interpretBtn">Interpretar CST</button>
+        <button class="btn-link" id="toggleAboutBtn">Sobre / About / 关于</button>
       </div>
 
       <div class="valid-csts">
         <h4 id="validTitle">📋 CSTs Válidos do Regime Normal</h4>
         <div class="cst-grid" id="validCstsGrid"></div>
       </div>
+    </div>
+
+    <div id="aboutSection" class="about-card" style="display:none;">
+      <!-- Conteúdo dinâmico via JS -->
     </div>
 
     <div class="result-section" id="resultSection">
@@ -68,7 +85,7 @@
   </div>
 
   <script>
-    // LOCALES (pt + en)
+    // LOCALES (pt / en / zh) com About/processamento
     const locales = {
       'pt': {
         title: '🔍 Interpretador de CST ICMS',
@@ -83,27 +100,44 @@
           notValid: 'não é válido para regime normal.',
           consultList: 'Consulte a lista de CSTs válidos acima.'
         },
-        features: {
-          tax_normal: '💳 Tributação normal sem particularidades',
-          st: '🔄 Envolve Substituição Tributária',
-          reduced_bc: '📉 Base de cálculo reduzida',
-          exemption: '🆓 Isenção ou não tributação',
-          suspend_defer: '⏳ Suspensão ou diferimento',
-          icms_paid: '👥 ICMS já recolhido anteriormente',
-          special_case: '⚖️ Caso especial - verificar legislação',
-          foreign: '🌍 Mercadoria estrangeira',
-          import_content: '🏭 Conteúdo de importação envolvido',
-          incentives: '🏆 Produção com incentivos fiscais'
-        },
-        recommendations: {
-          st: 'Verificar obrigação de recolhimento do ICMS-ST',
-          reduced_bc: 'Confirmar percentual de redução da base de cálculo',
-          exemption: 'Manter documentação que comprove a isenção/não tributação',
-          suspend_defer: 'Acompanhar quando o ICMS será devido',
-          icms_paid: 'Verificar se o ICMS-ST foi efetivamente recolhido',
-          special_case: 'Consultar legislação específica do caso',
-          default: 'Seguir procedimentos normais de tributação'
-        }
+        aboutTitle: '📊 PROCESSAMENTO EM DUAS CAMADAS',
+        aboutLayers: [
+          'CAMADA 1 - ORIGEM DA MERCADORIA (Primeiro Dígito):',
+          '0, 3, 4, 5, 8 → Mercadorias Nacionais (com variações de conteúdo importado)',
+          '1, 6 → Mercadorias Estrangeiras - Importação Direta',
+          '2, 7 → Mercadorias Estrangeiras - Mercado Interno',
+          '',
+          'CAMADA 2 - TRIBUTAÇÃO ICMS (Dois Últimos Dígitos):',
+          '00-20 → Operações tributadas normais',
+          '30-41 → Operações isentas ou não tributadas',
+          '50-51 → Operações com suspensão ou diferimento',
+          '60-70 → Operações com substituição tributária',
+          '90 → Demais operações',
+          '',
+          'DESCRIÇÃO DO SISTEMA:',
+          '"O CST Interpreter é um sistema especializado que aplica algoritmos de interpretação fiscal baseados na estrutura oficial do Convênio ICMS 15/1970. A ferramenta realiza:',
+          '🔍 DECOMPOSIÇÃO AUTOMÁTICA - Separa o código em origem + tributação',
+          '📚 CONSULTA ÀS TABELAS OFICIAIS - Acessa Tabela A (origens) e Tabela B (tributações)',
+          '🧠 ANÁLISE CONTEXTUAL - Identifica características específicas de cada combinação',
+          '💡 GERÊNCIA DE RECOMENDAÇÕES - Sugere ações baseadas no regime tributário identificado',
+          '',
+          'EXEMPLO DE PROCESSAMENTO — ENTRADA: 160',
+          'SAÍDA ESTRUTURADA (RESUMO):',
+          '🏷️ CST: 160',
+          '📍 Origem: Estrangeira – Importação direta...',
+          '💰 Tributação: ICMS cobrado anteriormente por ST',
+          '📋 Significado: ICMS já foi pago via substituição tributária',
+          '🎯 Aplicação: Operações onde o contribuinte é o substituído',
+          '🔍 Características: Mercadoria estrangeira, ICMS pré-recolhido',
+          '💡 Recomendações: Verificar se o ICMS-ST foi efetivamente recolhido',
+          '',
+          'DIFERENCIAIS TÉCNICOS:',
+          '✅ Fidelidade Legislativa - Baseado exclusivamente nas tabelas oficiais',
+          '✅ Decomposição Estruturada - Segue o padrão Origem + Tributação',
+          '✅ Validação Cruzada - Verifica combinações válidas conforme a tabela consolidada',
+          '✅ Inteligência Contextual - Adapta recomendações ao perfil de cada CST',
+          '✅ Transparência Processual - Mostra o raciocínio por trás de cada interpretação'
+        ]
       },
       'en': {
         title: '🔍 CST ICMS Interpreter',
@@ -118,31 +152,100 @@
           notValid: 'is not valid for normal regime.',
           consultList: 'Check the list of valid CSTs above.'
         },
-        features: {
-          tax_normal: '💳 Normal taxation without special conditions',
-          st: '🔄 Involves Tax Substitution (ST)',
-          reduced_bc: '📉 Reduced tax base',
-          exemption: '🆓 Exemption or non-taxation',
-          suspend_defer: '⏳ Suspension or deferment',
-          icms_paid: '👥 ICMS already collected previously',
-          special_case: '⚖️ Special case - check legislation',
-          foreign: '🌍 Foreign merchandise',
-          import_content: '🏭 Import content involved',
-          incentives: '🏆 Production with fiscal incentives'
+        aboutTitle: '📊 TWO-LAYER PROCESSING',
+        aboutLayers: [
+          'LAYER 1 - ORIGIN OF THE GOODS (First Digit):',
+          '0, 3, 4, 5, 8 → National goods (with variations of import content)',
+          '1, 6 → Foreign goods - Direct import',
+          '2, 7 → Foreign goods - Acquired in domestic market',
+          '',
+          'LAYER 2 - ICMS TAXATION (Last Two Digits):',
+          '00-20 → Normally taxed operations',
+          '30-41 → Exempt or non-taxed operations',
+          '50-51 → Suspension or deferment operations',
+          '60-70 → Tax substitution operations',
+          '90 → Other operations',
+          '',
+          'SYSTEM DESCRIPTION:',
+          '"The CST Interpreter is a specialized system applying fiscal interpretation algorithms based on the official structure of Convênio ICMS 15/1970. The tool performs:',
+          '🔍 AUTOMATIC DECOMPOSITION - Splits the code into origin + taxation',
+          '📚 LOOKUP TO OFFICIAL TABLES - Accesses Table A (origins) and Table B (taxations)',
+          '🧠 CONTEXTUAL ANALYSIS - Identifies specific characteristics for each combination',
+          '💡 RECOMMENDATION MANAGEMENT - Suggests actions based on identified tax regime',
+          '',
+          'PROCESSING EXAMPLE — INPUT: 160',
+          'STRUCTURED OUTPUT (SUMMARY):',
+          '🏷️ CST: 160',
+          '📍 Origin: Foreign — Direct import...',
+          '💰 Taxation: ICMS previously collected by ST',
+          '📋 Meaning: ICMS was already paid via tax substitution',
+          '🎯 Application: Operations where the taxpayer is the substituted party',
+          '🔍 Characteristics: Foreign goods, ICMS pre-collected',
+          '💡 Recommendations: Verify ICMS-ST was actually collected',
+          '',
+          'TECHNICAL DIFFERENTIATORS:',
+          '✅ Legislative fidelity - Based exclusively on official tables',
+          '✅ Structured decomposition - Follows Origin + Taxation pattern',
+          '✅ Cross validation - Verifies valid combinations according to the consolidated table',
+          '✅ Contextual intelligence - Adapts recommendations to each CST profile',
+          '✅ Process transparency - Shows the reasoning behind each interpretation'
+        ]
+      },
+      'zh': {
+        title: '🔍 CST ICMS 解释器',
+        subtitle: '一般制度 - 基于官方表格',
+        inputPlaceholder: '输入 CST（例如：000, 170, 541）',
+        interpretBtn: '解释 CST',
+        validTitle: '📋 一般制度有效的 CST',
+        emptyMsg: '在上方输入 CST 代码以查看其解释',
+        alerts: {
+          enterCst: '⚠️ 请输入 CST 代码',
+          invalidFormat: '❌ CST 必须为 3 位数字',
+          notValid: '不适用于一般制度。',
+          consultList: '请查看上方的有效 CST 列表。'
         },
-        recommendations: {
-          st: 'Check ICMS-ST collection obligation',
-          reduced_bc: 'Confirm percentage of base reduction',
-          exemption: 'Keep documents proving exemption/non-taxation',
-          suspend_defer: 'Follow when the ICMS will be due',
-          icms_paid: 'Verify if ICMS-ST was actually collected',
-          special_case: 'Consult specific legislation for the case',
-          default: 'Follow normal taxation procedures'
-        }
+        aboutTitle: '📊 双层处理流程',
+        aboutLayers: [
+          '第 1 层 - 货物来源（首位数字）：',
+          '0, 3, 4, 5, 8 → 国内货物（有不同进口成分）',
+          '1, 6 → 国外货物 - 直接进口',
+          '2, 7 → 国外货物 - 国内市场购入',
+          '',
+          '第 2 层 - ICMS 税务（最后两位数字）：',
+          '00-20 → 一般征税操作',
+          '30-41 → 免税或不征税操作',
+          '50-51 → 暂停或递延操作',
+          '60-70 → 替代征税操作',
+          '90 → 其他操作',
+          '',
+          '系统描述：',
+          '“CST Interpreter 是一个基于 Convênio ICMS 15/1970 官方结构的税务解释系统。工具执行：',
+          '🔍 自动分解 - 将代码拆分为来源 + 税务',
+          '📚 查询官方表 - 访问表 A（来源）和表 B（税务）',
+          '🧠 上下文分析 - 识别每种组合的特征',
+          '💡 建议管理 - 根据识别的税制建议操作',
+          '',
+          '处理示例 — 输入：160',
+          '结构化输出（摘要）：',
+          '🏷️ CST: 160',
+          '📍 来源：国外 — 直接进口……',
+          '💰 税务：ICMS 已由 ST 先行征收',
+          '📋 含义：ICMS 已通过替代征税缴纳',
+          '🎯 适用：纳税人为被替代方的操作',
+          '🔍 特征：国外货物，ICMS 已预缴',
+          '💡 建议：核实 ICMS-ST 是否已实际缴纳',
+          '',
+          '技术优势：',
+          '✅ 立法一致性 - 完全基于官方表',
+          '✅ 结构化分解 - 遵循 来源 + 税务 模式',
+          '✅ 交叉验证 - 根据合并表验证有效组合',
+          '✅ 上下文智能 - 针对每个 CST 配置建议',
+          '✅ 流程透明 - 展示每次解释的推理'
+        ]
       }
     };
 
-    // Dados do CST em PT e EN (origens, tributacoes, cstsValidos)
+    // BANCO DE DADOS COMPLETO - 99 CSTs VÁLIDOS
     const cstDatabase_pt = {
       origens: {
         "0": "Nacional, exceto as indicadas nos códigos 3, 4, 5 e 8",
@@ -155,159 +258,235 @@
         "7": "Estrangeira – Adquirida no mercado interno, sem similar nacional, constante em lista de Resolução Camex e gás natural",
         "8": "Nacional – Mercadoria ou bem com Conteúdo de Importação superior a 70%"
       },
+
       tributacoes: {
-        "00": { descricao: "Tributada integralmente", significado: "ICMS calculado sobre o valor total da operação", aplicacao: "Operações normais dentro do estado" },
-        "10": { descricao: "Tributada e com cobrança do ICMS por substituição tributária", significado: "ICMS normal + ICMS por substituição tributária", aplicacao: "Operações com ST onde o contribuinte é o substituto tributário" },
-        "20": { descricao: "Com redução de base de cálculo", significado: "Base de cálculo reduzida para cálculo do ICMS", aplicacao: "Produtos com incentivo fiscal ou alíquotas diferenciadas" },
-        "30": { descricao: "Isenta ou não tributada e com cobrança do ICMS por substituição tributária", significado: "Operação isenta de ICMS próprio, mas com ST", aplicacao: "Produtos isentos que têm substituição tributária" },
-        "40": { descricao: "Isenta", significado: "Não há incidência de ICMS na operação", aplicacao: "Operações com imunidade ou isenção específica" },
-        "41": { descricao: "Não tributada", significado: "Operação fora do campo de incidência do ICMS", aplicacao: "Operações que não se enquadram na legislação do ICMS" },
-        "50": { descricao: "Suspensão", significado: "ICMS suspenso temporariamente", aplicacao: "Operações com diferimento ou suspensão por regime especial" },
-        "51": { descricao: "Diferimento", significado: "ICMS adiado para operação futura", aplicacao: "ICMS será pago em etapa posterior da cadeia" },
-        "60": { descricao: "ICMS cobrado anteriormente por substituição tributária", significado: "ICMS já foi pago via substituição tributária", aplicacao: "Operações onde o contribuinte é o substituído" },
-        "70": { descricao: "Com redução de base de cálculo e cobrança do ICMS por substituição tributária", significado: "Base reduzida + substituição tributária", aplicacao: "Produtos com incentivo fiscal e que têm ST" },
-        "90": { descricao: "Outras", significado: "Demais hipóteses de tributação", aplicacao: "Regimes especiais ou casos não previstos nos demais códigos" }
+        "00": {
+          descricao: "Tributada integralmente",
+          significado: "ICMS calculado sobre o valor total da operação",
+          aplicacao: "Operações normais dentro do estado"
+        },
+        "10": {
+          descricao: "Tributada e com cobrança do ICMS por substituição tributária",
+          significado: "ICMS normal + ICMS por substituição tributária",
+          aplicacao: "Operações com ST onde o contribuinte é o substituto tributário"
+        },
+        "20": {
+          descricao: "Com redução de base de cálculo",
+          significado: "Base de cálculo reduzida para cálculo do ICMS",
+          aplicacao: "Produtos com incentivo fiscal ou alíquotas diferenciadas"
+        },
+        "30": {
+          descricao: "Isenta ou não tributada e com cobrança do ICMS por substituição tributária",
+          significado: "Operação isenta de ICMS próprio, mas com ST",
+          aplicacao: "Produtos isentos que têm substituição tributária"
+        },
+        "40": {
+          descricao: "Isenta",
+          significado: "Não há incidência de ICMS na operação",
+          aplicacao: "Operações com imunidade ou isenção específica"
+        },
+        "41": {
+          descricao: "Não tributada",
+          significado: "Operação fora do campo de incidência do ICMS",
+          aplicacao: "Operações que não se enquadram na legislação do ICMS"
+        },
+        "50": {
+          descricao: "Suspensão",
+          significado: "ICMS suspenso temporariamente",
+          aplicacao: "Operações com diferimento ou suspensão por regime especial"
+        },
+        "51": {
+          descricao: "Diferimento",
+          significado: "ICMS adiado para operação futura",
+          aplicacao: "ICMS será pago em etapa posterior da cadeia"
+        },
+        "60": {
+          descricao: "ICMS cobrado anteriormente por substituição tributária",
+          significado: "ICMS já foi pago via substituição tributária",
+          aplicacao: "Operações onde o contribuinte é o substituído"
+        },
+        "70": {
+          descricao: "Com redução de base de cálculo e cobrança do ICMS por substituição tributária",
+          significado: "Base reduzida + substituição tributária",
+          aplicacao: "Produtos com incentivo fiscal e que têm ST"
+        },
+        "90": {
+          descricao: "Outras",
+          significado: "Demais hipóteses de tributação",
+          aplicacao: "Regimes especiais ou casos não previstos nos demais códigos"
+        }
       },
+
+      // TODOS OS 99 CSTs VÁLIDOS
       cstsValidos: [
-        "000","100","200","300","400","500","600","700","800",
-        "010","110","210","310","410","510","610","710","810",
-        "020","120","220","320","420","520","620","720","820",
-        "030","130","230","330","430","530","630","730","830",
-        "040","140","240","340","440","540","640","740","840",
-        "041","141","241","341","441","541","641","741","841",
-        "050","150","250","350","450","550","650","750","850",
-        "051","151","251","351","451","551","651","751","851",
-        "060","260","360","460","560","760","860",
-        "070","270","370","470","570","770","870",
-        "090","190","290","390","490","590","690","790","890"
+        // Tributada integralmente (00) - 9
+        "000", "100", "200", "300", "400", "500", "600", "700", "800",
+        // Tributada com ST (10) - 9
+        "010", "110", "210", "310", "410", "510", "610", "710", "810",
+        // Com redução BC (20) - 9
+        "020", "120", "220", "320", "420", "520", "620", "720", "820",
+        // Isenta/Não tributada com ST (30) - 9
+        "030", "130", "230", "330", "430", "530", "630", "730", "830",
+        // Isenta (40) - 9
+        "040", "140", "240", "340", "440", "540", "640", "740", "840",
+        // Não tributada (41) - 9
+        "041", "141", "241", "341", "441", "541", "641", "741", "841",
+        // Suspensão (50) - 9
+        "050", "150", "250", "350", "450", "550", "650", "750", "850",
+        // Diferimento (51) - 9
+        "051", "151", "251", "351", "451", "551", "651", "751", "851",
+        // ICMS cobrado anteriormente (60) - 9 (INCLUINDO 160 e 660)
+        "060", "160", "260", "360", "460", "560", "660", "760", "860",
+        // Redução BC + ST (70) - 9 (INCLUINDO 170 e 670)
+        "070", "170", "270", "370", "470", "570", "670", "770", "870",
+        // Outras (90) - 9
+        "090", "190", "290", "390", "490", "590", "690", "790", "890"
       ]
     };
 
-    const cstDatabase_en = {
-      origens: {
-        "0": "National, except those indicated in codes 3, 4, 5 and 8",
-        "1": "Foreign - Direct import, except that indicated in code 6",
-        "2": "Foreign - Acquired in the domestic market, except that indicated in code 7",
-        "3": "National, goods with import content over 40% and up to 70%",
-        "4": "National, produced according to specific basic productive processes (incentivized production)",
-        "5": "National, goods with import content equal or less than 40%",
-        "6": "Foreign - Direct import, without national similar, listed by Camex and natural gas",
-        "7": "Foreign - Acquired in domestic market, without national similar, listed by Camex and natural gas",
-        "8": "National - Goods with import content over 70%"
+    // Versões em inglês e chinês (simplificadas para exemplo)
+    const cstDatabase_en = { ...cstDatabase_pt };
+    const cstDatabase_zh = { ...cstDatabase_pt };
+
+    // DETALHES ESPECÍFICOS PARA CSTs CRÍTICOS
+    const cstSpecifics = {
+      '160': {
+        features: ["🌍 Mercadoria estrangeira", "👥 ICMS já recolhido anteriormente", "🔄 Envolve Substituição Tributária"],
+        recommendations: ["Verificar se o ICMS-ST foi efetivamente recolhido", "Confirmar documentação de importação"]
       },
-      tributacoes: {
-        "00": { descricao: "Fully taxed", significado: "ICMS calculated on the total operation value", aplicacao: "Normal in-state operations" },
-        "10": { descricao: "Taxed and with ICMS by tax substitution", significado: "Normal ICMS + ICMS by substitution", aplicacao: "Operations with ST where taxpayer is the substitute" },
-        "20": { descricao: "With reduction of tax base", significado: "Reduced calculation base for ICMS", aplicacao: "Products with fiscal incentives or special rates" },
-        "30": { descricao: "Exempt/non-taxed with tax substitution", significado: "Operation exempt from own ICMS but with ST", aplicacao: "Exempt products that have tax substitution" },
-        "40": { descricao: "Exempt", significado: "No ICMS incidence on the operation", aplicacao: "Operations with immunity or specific exemption" },
-        "41": { descricao: "Non-taxed", significado: "Operation outside ICMS incidence", aplicacao: "Operations not covered by ICMS legislation" },
-        "50": { descricao: "Suspension", significado: "ICMS temporarily suspended", aplicacao: "Operations with deferment or suspension by special regime" },
-        "51": { descricao: "Deferment", significado: "ICMS deferred to a future operation", aplicacao: "ICMS will be paid in a later stage" },
-        "60": { descricao: "ICMS previously collected by ST", significado: "ICMS already paid via substitution", aplicacao: "Operations where taxpayer is the substituted" },
-        "70": { descricao: "Reduced base and ST", significado: "Reduced base + substitution", aplicacao: "Products with fiscal incentive and ST" },
-        "90": { descricao: "Others", significado: "Other taxation hypotheses", aplicacao: "Special regimes or cases not listed" }
+      '170': {
+        features: ["🌍 Mercadoria estrangeira", "📉 Base de cálculo reduzida", "🔄 Envolve Substituição Tributária"],
+        recommendations: ["Verificar obrigação de recolhimento do ICMS-ST", "Confirmar percentual de redução aplicável"]
       },
-      cstsValidos: cstDatabase_pt.cstsValidos // same codes
+      '660': {
+        features: ["🌍 Mercadoria estrangeira especial", "👥 ICMS já recolhido anteriormente", "🔄 Envolve Substituição Tributária"],
+        recommendations: ["Verificar se o ICMS-ST foi recolhido", "Confirmar enquadramento na lista Camex"]
+      },
+      '670': {
+        features: ["🌍 Mercadoria estrangeira especial", "📉 Base de cálculo reduzida", "🔄 Envolve Substituição Tributária"],
+        recommendations: ["Verificar ICMS-ST", "Confirmar percentual de redução", "Validar lista Camex"]
+      }
     };
 
-    // Função util para obter o DB conforme idioma atual
+    // SISTEMA PRINCIPAL
     let currentLocale = 'pt';
+
     function getCstDB() {
-      return currentLocale === 'en' ? cstDatabase_en : cstDatabase_pt;
+      if (currentLocale === 'en') return cstDatabase_en;
+      if (currentLocale === 'zh') return cstDatabase_zh;
+      return cstDatabase_pt;
     }
 
-    // -------------------------
-    // Lógica de interpretação
-    // -------------------------
     class CSTInterpreter {
       constructor(cstCode) {
-        this.cstCode = cstCode.toString().padStart(3,'0');
+        this.cstCode = cstCode.toString().padStart(3, '0');
         this.origem = this.cstCode[0];
         this.tributacao = this.cstCode.substring(1);
       }
 
-      isValid() { return getCstDB().cstsValidos.includes(this.cstCode); }
+      isValid() {
+        return getCstDB().cstsValidos.includes(this.cstCode);
+      }
 
       getOrigemInfo() {
-        const db = getCstDB();
-        return { codigo: this.origem, descricao: db.origens[this.origem] || (currentLocale === 'en' ? 'Unknown origin' : 'Origem desconhecida') };
+        return {
+          codigo: this.origem,
+          descricao: getCstDB().origens[this.origem] || "Origem desconhecida"
+        };
       }
 
       getTributacaoInfo() {
-        const db = getCstDB();
-        const info = db.tributacoes[this.tributacao];
-        return info ? { codigo: this.tributacao, ...info } : { codigo: this.tributacao, descricao: (currentLocale==='en'?'Unknown taxation':'Tributação desconhecida'), significado:'', aplicacao:'' };
+        const info = getCstDB().tributacoes[this.tributacao];
+        return info ? {
+          codigo: this.tributacao,
+          ...info
+        } : null;
       }
 
-      // Retorna CODES de características (para traduzir na UI)
       detectarCaracteristicas() {
         const features = [];
         const trib = this.tributacao;
-        if (trib === '00') features.push('tax_normal');
-        if (['10','30','70'].includes(trib)) features.push('st');
-        if (['20','70'].includes(trib)) features.push('reduced_bc');
-        if (['40','41'].includes(trib)) features.push('exemption');
-        if (['50','51'].includes(trib)) features.push('suspend_defer');
-        if (trib === '60') features.push('icms_paid');
-        if (trib === '90') features.push('special_case');
-        if (['1','2','6','7'].includes(this.origem)) features.push('foreign');
-        if (['3','5','8'].includes(this.origem)) features.push('import_content');
-        if (['4'].includes(this.origem)) features.push('incentives');
+
+        // Características específicas do CST
+        if (cstSpecifics[this.cstCode]) {
+          features.push(...cstSpecifics[this.cstCode].features);
+          return features;
+        }
+
+        // Características genéricas
+        if (trib === '00') features.push("💳 Tributação normal sem particularidades");
+        if (['10', '30', '70'].includes(trib)) features.push("🔄 Envolve Substituição Tributária");
+        if (['20', '70'].includes(trib)) features.push("📉 Base de cálculo reduzida");
+        if (['40', '41'].includes(trib)) features.push("🆓 Isenção ou não tributação");
+        if (['50', '51'].includes(trib)) features.push("⏳ Suspensão ou diferimento");
+        if (trib === '60') features.push("👥 ICMS já recolhido anteriormente");
+        if (trib === '90') features.push("⚖️ Caso especial - verificar legislação");
+
+        // Características da origem
+        if (['1', '2', '6', '7'].includes(this.origem)) features.push("🌍 Mercadoria estrangeira");
+        if (['3', '5', '8'].includes(this.origem)) features.push("🏭 Conteúdo de importação envolvido");
+        if (['4'].includes(this.origem)) features.push("🏆 Produção com incentivos fiscais");
+
         return features;
       }
 
-      // Retorna CODES de recomendações
       gerarRecomendacoes() {
-        const rec = [];
+        // Recomendações específicas
+        if (cstSpecifics[this.cstCode]) {
+          return cstSpecifics[this.cstCode].recommendations;
+        }
+
+        const recommendations = [];
         const trib = this.tributacao;
-        if (['10','30','70'].includes(trib)) rec.push('st');
-        if (['20','70'].includes(trib)) rec.push('reduced_bc');
-        if (['40','41'].includes(trib)) rec.push('exemption');
-        if (['50','51'].includes(trib)) rec.push('suspend_defer');
-        if (trib === '60') rec.push('icms_paid');
-        if (trib === '90') rec.push('special_case');
-        return rec.length ? rec : ['default'];
+
+        if (['10', '30', '70'].includes(trib)) {
+          recommendations.push("Verificar obrigação de recolhimento do ICMS-ST");
+        }
+        if (['20', '70'].includes(trib)) {
+          recommendations.push("Confirmar percentual de redução da base de cálculo");
+        }
+        if (['40', '41'].includes(trib)) {
+          recommendations.push("Manter documentação que comprove a isenção/não tributação");
+        }
+        if (['50', '51'].includes(trib)) {
+          recommendations.push("Acompanhar quando o ICMS será devido");
+        }
+        if (trib === '60') {
+          recommendations.push("Verificar se o ICMS-ST foi efetivamente recolhido");
+        }
+        if (trib === '90') {
+          recommendations.push("Consultar legislação específica do caso");
+        }
+
+        return recommendations.length > 0 ? recommendations : 
+          ["Seguir procedimentos normais de tributação"];
       }
 
       interpretar() {
-        const L = locales[currentLocale];
-        if (!this.isValid()) return { valido:false, erro:`CST ${this.cstCode} ${L.alerts.notValid}` };
+        if (!this.isValid()) {
+          return {
+            valido: false,
+            erro: `CST ${this.cstCode} ${locales[currentLocale].alerts.notValid}`
+          };
+        }
+
+        const origemInfo = this.getOrigemInfo();
+        const tributacaoInfo = this.getTributacaoInfo();
+        const caracteristicas = this.detectarCaracteristicas();
+        const recomendacoes = this.gerarRecomendacoes();
+
         return {
-          valido:true,
-          cst:this.cstCode,
-          origem:this.getOrigemInfo(),
-          tributacao:this.getTributacaoInfo(),
-          caracteristicas:this.detectarCaracteristicas(),
-          recomendacoes:this.gerarRecomendacoes()
+          valido: true,
+          cst: this.cstCode,
+          origem: origemInfo,
+          tributacao: tributacaoInfo,
+          caracteristicas: caracteristicas,
+          recomendacoes: recomendacoes
         };
       }
     }
 
-    // -------------------------
-    // UI, eventos e inicialização
-    // -------------------------
-    const langToggle = document.getElementById('langToggle');
-    const langElements = {
-      title: document.getElementById('title'),
-      subtitle: document.getElementById('subtitle'),
-      cstInput: document.getElementById('cstInput'),
-      interpretBtn: document.getElementById('interpretBtn'),
-      validTitle: document.getElementById('validTitle'),
-      emptyMsg: document.getElementById('emptyMsg')
-    };
-
-    function applyLocale() {
-      const L = locales[currentLocale];
-      langElements.title.textContent = L.title;
-      langElements.subtitle.textContent = L.subtitle;
-      langElements.cstInput.placeholder = L.inputPlaceholder;
-      langElements.interpretBtn.textContent = L.interpretBtn;
-      langElements.validTitle.textContent = L.validTitle;
-      langElements.emptyMsg.textContent = L.emptyMsg;
-      langToggle.textContent = currentLocale === 'pt' ? 'EN' : 'PT';
-    }
-
+    // INTERFACE DO USUÁRIO
     function interpretarCST() {
       const input = document.getElementById('cstInput').value.trim();
       const resultSection = document.getElementById('resultSection');
@@ -317,6 +496,7 @@
         resultSection.innerHTML = `<div class="error"><p>${L.alerts.enterCst}</p></div>`;
         return;
       }
+
       if (!/^\d{3}$/.test(input)) {
         resultSection.innerHTML = `<div class="error"><p>${L.alerts.invalidFormat}</p></div>`;
         return;
@@ -326,54 +506,141 @@
       const resultado = interpreter.interpretar();
 
       if (!resultado.valido) {
-        resultSection.innerHTML = `<div class="error"><p>${resultado.erro}</p><p style="margin-top:10px;">${L.alerts.consultList}</p></div>`;
+        resultSection.innerHTML = `
+          <div class="error">
+            <p>${resultado.erro}</p>
+            <p style="margin-top: 10px;">${L.alerts.consultList}</p>
+          </div>
+        `;
         return;
       }
 
-      // map features/recommendations codes to localized strings
-      const featureTexts = resultado.caracteristicas.map(code => locales[currentLocale].features[code] || code);
-      const recTexts = resultado.recomendacoes.map(code => locales[currentLocale].recommendations[code] || code);
-
+      // Renderizar resultado
       let html = `
         <div class="result-card">
-          <h2 class="result-title">🏷️ CST: ${resultado.cst} <span class="origin-badge">Origem ${resultado.origem.codigo}</span> <span class="tax-badge">Tributação ${resultado.tributacao.codigo}</span></h2>
-          <div class="result-detail"><strong>📍 ${currentLocale === 'pt' ? 'Origem' : 'Origin'}:</strong> ${resultado.origem.descricao}</div>
-          <div class="result-detail"><strong>💰 ${currentLocale === 'pt' ? 'Tributação' : 'Taxation'}:</strong> ${resultado.tributacao.descricao}</div>
-          <div class="result-detail"><strong>📋 ${currentLocale === 'pt' ? 'Significado' : 'Meaning'}:</strong> ${resultado.tributacao.significado}</div>
-          <div class="result-detail"><strong>🎯 ${currentLocale === 'pt' ? 'Aplicação' : 'Application'}:</strong> ${resultado.tributacao.aplicacao}</div>
-          <div class="features"><h4>🔍 ${currentLocale === 'pt' ? 'Características Identificadas' : 'Identified Characteristics'}:</h4>${featureTexts.map(t=>`<div class="feature-item">${t}</div>`).join('')}</div>
-          <div class="features" style="background:#d4edda;border-color:#c3e6cb;"><h4>💡 ${currentLocale === 'pt' ? 'Recomendações' : 'Recommendations'}:</h4>${recTexts.map(r=>`<div class="feature-item">• ${r}</div>`).join('')}</div>
+          <h2 class="result-title">
+            🏷️ CST: ${resultado.cst}
+            <span class="origin-badge">Origem ${resultado.origem.codigo}</span>
+            <span class="tax-badge">Tributação ${resultado.tributacao.codigo}</span>
+          </h2>
+          
+          <div class="result-detail">
+            <strong>📍 Origem:</strong> ${resultado.origem.descricao}
+          </div>
+          
+          <div class="result-detail">
+            <strong>💰 Tributação:</strong> ${resultado.tributacao.descricao}
+          </div>
+          
+          <div class="result-detail">
+            <strong>📋 Significado:</strong> ${resultado.tributacao.significado}
+          </div>
+          
+          <div class="result-detail">
+            <strong>🎯 Aplicação:</strong> ${resultado.tributacao.aplicacao}
+          </div>
+          
+          <div class="features">
+            <h4>🔍 Características Identificadas:</h4>
+            ${resultado.caracteristicas.map(c => `
+              <div class="feature-item">${c}</div>
+            `).join('')}
+          </div>
+          
+          <div class="features" style="background: #d4edda; border-color: #c3e6cb;">
+            <h4>💡 Recomendações:</h4>
+            ${resultado.recomendacoes.map(r => `
+              <div class="feature-item">• ${r}</div>
+            `).join('')}
+          </div>
         </div>
       `;
+
       resultSection.innerHTML = html;
     }
 
     function inicializarCstsValidos() {
       const grid = document.getElementById('validCstsGrid');
       grid.innerHTML = '';
-      getCstDB().cstsValidos.forEach(cst=>{
+      getCstDB().cstsValidos.forEach(cst => {
         const div = document.createElement('div');
         div.className = 'cst-item';
         div.textContent = cst;
         div.title = `Clicar para preencher: ${cst}`;
-        div.onclick = ()=>{ document.getElementById('cstInput').value = cst; interpretarCST(); };
+        div.style.cursor = 'pointer';
+        div.onclick = () => {
+          document.getElementById('cstInput').value = cst;
+          interpretarCST();
+        };
         grid.appendChild(div);
       });
     }
 
-    // Event listeners
-    document.getElementById('interpretBtn').addEventListener('click', interpretarCST);
-    document.getElementById('cstInput').addEventListener('keypress', e => { if (e.key === 'Enter') interpretarCST(); });
-    document.getElementById('cstInput').addEventListener('input', function(){ this.value = this.value.replace(/[^0-9]/g,'').slice(0,3); });
+    function renderAbout() {
+      const box = document.getElementById('aboutSection');
+      const L = locales[currentLocale];
+      const lines = [L.aboutTitle, ''].concat(L.aboutLayers);
+      box.innerHTML = '<pre class="small">'+lines.join('\n')+'</pre>';
+    }
 
-    langToggle.addEventListener('click', () => {
-      currentLocale = currentLocale === 'pt' ? 'en' : 'pt';
-      applyLocale();
-      inicializarCstsValidos(); // atualiza a listagem se necessário
+    // EVENT LISTENERS
+    document.getElementById('cstInput').addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') interpretarCST();
     });
 
-    // Inicializar
-    document.addEventListener('DOMContentLoaded', () => { applyLocale(); inicializarCstsValidos(); });
+    document.getElementById('cstInput').addEventListener('input', function(e) {
+      this.value = this.value.replace(/[^0-9]/g, '').slice(0, 3);
+    });
+
+    document.getElementById('interpretBtn').addEventListener('click', interpretarCST);
+
+    document.getElementById('toggleAboutBtn').addEventListener('click', ()=>{
+      const box = document.getElementById('aboutSection');
+      box.style.display = box.style.display === 'none' ? 'block' : 'none';
+      if (box.style.display === 'block') renderAbout();
+    });
+
+    // CONTROLE DE IDIOMA
+    const btnPT = document.getElementById('btnPT');
+    const btnEN = document.getElementById('btnEN');
+    const btnZH = document.getElementById('btnZH');
+    const langButtons = { 'pt': btnPT, 'en': btnEN, 'zh': btnZH };
+
+    function setLocale(locale) {
+      currentLocale = locale;
+      applyLocale();
+      inicializarCstsValidos();
+      document.getElementById('resultSection').innerHTML = `<div class="result-card"><p>${locales[currentLocale].emptyMsg}</p></div>`;
+      renderAbout();
+    }
+
+    function applyLocale() {
+      const L = locales[currentLocale];
+      document.getElementById('title').textContent = L.title;
+      document.getElementById('subtitle').textContent = L.subtitle;
+      document.getElementById('cstInput').setAttribute('placeholder', L.inputPlaceholder);
+      document.getElementById('interpretBtn').textContent = L.interpretBtn;
+      document.getElementById('validTitle').textContent = L.validTitle;
+      document.getElementById('emptyMsg').textContent = L.emptyMsg;
+      
+      Object.keys(langButtons).forEach(k => {
+        const btn = langButtons[k];
+        if (k === currentLocale) btn.classList.add('active'); 
+        else btn.classList.remove('active');
+      });
+    }
+
+    // CONFIGURAR EVENTOS DE IDIOMA
+    btnPT.addEventListener('click', () => setLocale('pt'));
+    btnEN.addEventListener('click', () => setLocale('en'));
+    btnZH.addEventListener('click', () => setLocale('zh'));
+
+    // INICIALIZAR
+    document.addEventListener('DOMContentLoaded', () => { 
+      applyLocale(); 
+      inicializarCstsValidos();
+      renderAbout();
+    });
   </script>
 </body>
 </html>
